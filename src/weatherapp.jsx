@@ -42,8 +42,9 @@ export default function Weatherapp() {
         <input type="text" onChange={handlecitychange} value={city} />
         <button onClick={handlesubmit}>Search</button>
       </div>
-      {loading && <p>Loading data…</p>}
-      {weatherData && weatherData.current && (
+      {loading ? (
+        <p className="loading">Loading data...</p>
+      ) : weatherData ? (
         <div className="weather-cards">
           <div className="weather-card">
             <h5>Temperature</h5>
@@ -62,7 +63,7 @@ export default function Weatherapp() {
             <span>{weatherData.current.wind_kph}kph</span>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
